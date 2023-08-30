@@ -1,0 +1,28 @@
+version: "3.9"
+
+services:
+  to_yandex_map_db:
+    container_name: "to_yandex_map_db"
+    image: postgres:13.3
+    environment:
+      POSTGRES_DB: "test_db"
+      POSTGRES_USER: "admin"
+      POSTGRES_PASSWORD: "admin"
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+    volumes:
+      - db_volume:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  adminer:
+    container_name: "adminer_test"
+    image: adminer
+    restart: always
+    ports:
+      - "8081:8080"
+
+    depends_on:
+      - to_yandex_map_db
+
+volumes:
+  db_volume:
