@@ -3,6 +3,7 @@ from pydantic import BaseModel
 
 class RouteBase(BaseModel):
     route: str
+    description: str
     city_id: int
 
 

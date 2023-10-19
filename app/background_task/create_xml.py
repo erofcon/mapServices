@@ -1,10 +1,12 @@
+import time
 import xml.etree.ElementTree as elTree
 
 from app.crud import transport as transport_crud
 from app.crud import nddata as nddata_crud
 
 
-async def create_xml(city_id: int, clid: str) -> str:
+async def create_xml(city_id: int, clid: str) -> str | None:
+    z = time.time()
     root = elTree.Element('tracks', clid=clid)
 
     transport_list = await transport_crud.get_transport_data(city_id=city_id)
@@ -23,4 +25,6 @@ async def create_xml(city_id: int, clid: str) -> str:
                                   time=location_data.createddatetime.utcnow().strftime('%d%m%Y:%H%M%S')
                                   )
 
-    return elTree.tostring(root, xml_declaration=True, encoding='utf-8').decode()
+        return elTree.tostring(root, xml_declaration=True, encoding='UTF-8').decode()
+
+    return None

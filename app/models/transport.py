@@ -11,6 +11,7 @@ transport = Table(
     Column('id', Integer(), primary_key=True),
     Column('car_number', String(), unique=True),
     Column('imei', String(), unique=True),
+    Column('description', String()),
     Column('device_id', Integer(), unique=True),
     Column('category', String(), default='s'),
     Column('route', Integer(), ForeignKey(route.c.id)),

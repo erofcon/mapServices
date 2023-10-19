@@ -8,6 +8,7 @@ from app.schemas import route as route_schemas
 async def create_route(route: route_schemas.RouteCreate) -> bool:
     query = route_model.route.insert().values(
         route=route.route,
+        description=route.description,
         city_id=route.city_id
     )
 

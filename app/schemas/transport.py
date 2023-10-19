@@ -4,6 +4,7 @@ from pydantic import BaseModel
 class TransportBase(BaseModel):
     car_number: str
     imei: str
+    description: str
     category: str
     vehicle_type: int
     city_name: int

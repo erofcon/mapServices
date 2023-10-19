@@ -14,6 +14,6 @@ async def create_route(route: route_schemas.RouteCreate):
     return HTTPException(status_code=status.HTTP_201_CREATED)
 
 
-@router.post('/get_route', response_model=list[route_schemas.Route])
+@router.post('/get_route')
 async def get_route():
     return await route_crud.get_routes()

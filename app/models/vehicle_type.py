@@ -5,5 +5,5 @@ metadata = MetaData()
 vehicle_type = Table(
     'vehicle_type', metadata,
     Column('id', Integer(), primary_key=True),
-    Column('vehicle_type', String()),
+    Column('vehicle_type', String(), unique=True),
 )
